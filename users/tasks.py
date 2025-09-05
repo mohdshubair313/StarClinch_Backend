@@ -33,8 +33,6 @@ def weekly_user_data_backup_local():
     return f"User backup saved at {filepath}"
 
 
-User = get_user_model()
-
 @shared_task
 def weekly_user_data_backup():
     """Export user data to S3 in CSV weekly."""
@@ -44,16 +42,16 @@ def weekly_user_data_backup():
     writer.writerow(["ID", "Username", "Email", "Date Joined"])
 
     for user in User.objects.all():
-        writer.writerow([user.id, user.username, user.email, user.date_joined])
+        writer.writerow([user.pk, user.username, user.email, user.date_joined])
 
     buffer.seek(0)
 
     # Upload to S3
     s3 = boto3.client(
         "s3",
-        aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-        region_name=settings.AWS_S3_REGION_NAME,
+        aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
+        region_name=os.environ.get("AWS_S3_REGION_NAME"),
     )
 
     file_key = f"user_backups/users_{str(datetime.date.today())}.csv"
