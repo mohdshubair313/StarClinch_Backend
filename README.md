@@ -10,7 +10,7 @@ This project implements a backend for a social media-like recipe platform using 
 2. **Authentication & Authorization** — via JWT (SimpleJWT).
 3. **Ratings** — customers can rate recipes; average and count stored for fast retrieval.
 4. **Daily Emails** — scheduled at 6 AM (Mon–Fri) via `django-celery-beat`.
-5. **Weekly User Backup** — exports user data to local CSV file in `backups/` folder.
+5. **Weekly User Backup** — exports user data to local CSV file in `backups/` folder and store also to AWS S3 storage.
 6. **Query optimization** — using `select_related`, aggregate fields, indexing, batch email sending.
 
 ---
