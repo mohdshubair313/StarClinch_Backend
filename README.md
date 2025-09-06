@@ -33,9 +33,9 @@ This project implements a backend for a social media-like recipe platform using 
 ```bash
 git clone https://github.com/mohdshubair313/StarClinch_Backend.git
 cd StarClinch_Backend
-python -m venv venv
-source venv/bin/activate         # Windows: venv\Scripts\activate
-pip install -r requirements.txt or uv sync
+uv venv
+source .venv/bin/activate     # Windows: .venv\Scripts\activate
+uv pip install -r requirements.txt
 ````
 
 ### Environment Variables
