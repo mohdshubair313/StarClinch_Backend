@@ -153,7 +153,7 @@ Add tests for:
 ```
 StarClinch_Backend/
 ├── project/                  # Django project
-├── accounts/                 # Auth, users, email & backup tasks
+├── users/                 # Auth, users, email & backup tasks
 ├── recipes/                  # Recipe logic, image tasks
 ├── backups/                  # Local CSV backups
 ├── manage.py
