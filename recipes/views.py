@@ -10,17 +10,17 @@ from .ratings import create_or_update_rating
 
 # Custom permissions
 class IsSeller(permissions.BasePermission):
-    def has_permission(self, request, view):
+    def has_permission(self, request):
         return bool(request.user and request.user.is_authenticated and request.user.role == 'seller')
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj):
+    def has_object_permission(self, request, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
         return obj.seller == request.user
 
 class IsCustomer(permissions.BasePermission):
-    def has_permission(self, request, view):
+    def has_permission(self, request):
         return bool(request.user and request.user.is_authenticated and request.user.role == 'customer')
 
 class RecipeViewSet(viewsets.ModelViewSet):
