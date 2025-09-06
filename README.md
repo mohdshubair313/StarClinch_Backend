@@ -23,6 +23,7 @@ This project implements a backend for a social media-like recipe platform using 
 - Cloudinary for image storage & CDN (via SDK)  
 - PostgreSQL or SQLite (development)  
 - Docker (optional) for containerization
+-  UV package manager for fast cli command execution
 
 ---
 
@@ -58,13 +59,13 @@ EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 DEFAULT_FROM_EMAIL=from@example.com
 ```
 
-Load with `django-environ` or `python-decouple`.
+Load with `django-environ` 
 
 ### Migrations
 
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+uv run manage.py makemigrations
+uv run manage.py migrate
 ```
 
 ### Start Services
@@ -73,7 +74,7 @@ In separate terminals:
 
 ```bash
 # Terminal 1 — Django server
-python manage.py runserver
+uv run manage.py runserver
 
 # Terminal 2 — Redis (broker)
 redis-server
