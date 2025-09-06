@@ -1,0 +1,11 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+python-dotenv
+celery
+redis
+django-celery-beat
+django-celery-results
+cloudinary
+Pillow
+python-decouple
